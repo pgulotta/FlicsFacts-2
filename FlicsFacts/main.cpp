@@ -2,8 +2,6 @@
 #include <QApplication>
 #include <QQuickStyle>
 
-
-
 int main(int argc, char* argv[]) {
   QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
   QApplication::setApplicationName("Flics Facts");
