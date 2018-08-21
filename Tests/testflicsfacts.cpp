@@ -1,4 +1,4 @@
-#include "../FlicsFacts/Model/movieresponse.hpp "
+#include "../FlicsFacts/Model/movieresponse.hpp"
 #include "../FlicsFacts/Controller/movieviewmanager.hpp"
 #include "../FlicsFacts/Controller/shareresponsesformatter.hpp"
 #include "../FlicsFacts/Controller/moviesearchparser.hpp"
