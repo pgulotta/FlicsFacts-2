@@ -7,8 +7,6 @@
         <file>Images/play_movies@2x.png</file>
         <file>Images/logo.png</file>
         <file>Images/logo@2x.png</file>
-        <file>Images/menu.png</file>
-        <file>Images/menu@2x.png</file>
         <file>Images/more.png</file>
         <file>Images/more@2x.png</file>
         <file>Images/search.png</file>
@@ -23,8 +21,6 @@
         <file>Images/deleteall@2x.png</file>
         <file>Images/credits.png</file>
         <file>Images/credits@2x.png</file>
-        <file>Images/back.png</file>
-        <file>Images/back@2x.png</file>
         <file>Images/splash.png</file>
         <file>Qml/main.qml</file>
         <file>Qml/MainPage.qml</file>
@@ -42,5 +38,6 @@
         <file>Qml/TitledToolBar.qml</file>
         <file>Qml/MovieSearchToolBar.qml</file>
         <file>Qml/MovieResponseDelegate.qml</file>
+        <file>Qml/Constants.qml</file>
     </qresource>
 </RCC>

@@ -3,7 +3,7 @@ import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
 import QtQuick.Controls 2.2
 import QtQuick.Particles 2.0
-
+import com.twentysixapps.flicsfacts2.constants 1.0
 
 Page {
     id: mainPageId
@@ -20,11 +20,12 @@ Page {
             visible: true
             anchors.left: parent.left
             anchors.leftMargin: textBorderWidth
-            contentItem: Image {
-                fillMode: Image.Pad
+            contentItem: Text {
+                text: Constants.menuChar
+                color: "white"
+                font.pixelSize: fontSizeXLarge
                 horizontalAlignment: Image.AlignHCenter
                 verticalAlignment: Image.AlignVCenter
-                source: "qrc:/Images/menu.png"
             }
             onClicked: mainDrawerId.open()
         }

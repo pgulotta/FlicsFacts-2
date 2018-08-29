@@ -15,6 +15,7 @@ Initializer::Initializer(QObject* parent) :
   QQmlApplicationEngine engine;
 
   FloatingActions::initialize(engine.rootContext(), &mQmlApplicationEngine);
+  qmlRegisterSingletonType(QUrl(QStringLiteral("qrc:/Qml/Constants.qml")), "com.twentysixapps.flicsfacts2.constants", 1, 0, "Constants" );
   mQmlApplicationEngine.rootContext()->setContextProperty("movieSearchResponses", mMovieViewManager.movieSearchResponses() );
   mQmlApplicationEngine.rootContext()->setContextProperty("nowPlayingMoviesResponses", mMovieViewManager.nowPlayingMoviesResponses() );
   mQmlApplicationEngine.rootContext()->setContextProperty("sortedUpcomingMoviesResponses",

@@ -2,7 +2,7 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
 import QtQuick.Controls 2.2
-
+import com.twentysixapps.flicsfacts2.constants 1.0
 import "../fam"
 
 ToolBar {
@@ -13,11 +13,12 @@ ToolBar {
         visible: true
         anchors.left: parent.left
         anchors.leftMargin: textBorderWidth
-        contentItem: Image {
-            fillMode: Image.Pad
+        contentItem: Text {
+            text: Constants.backChar
+            color: "white"
+            font.pixelSize: fontSizeXLarge
             horizontalAlignment: Image.AlignHCenter
             verticalAlignment: Image.AlignVCenter
-            source: "qrc:/Images/back.png"
         }
         onClicked: onBackSelected()
     }
