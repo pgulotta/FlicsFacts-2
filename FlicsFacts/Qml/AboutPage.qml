@@ -16,8 +16,8 @@ Page {
             anchors.leftMargin: textBorderWidth
             contentItem: Text {
                 text: Constants.backChar
-                color: "white"
-                font.pixelSize: fontSizeXLarge
+                color: Constants.defaultTextColor
+                font.pointSize: fontSizeLarge
                 horizontalAlignment: Image.AlignHCenter
                 verticalAlignment: Image.AlignVCenter
             }
@@ -25,8 +25,8 @@ Page {
         }
         Label {
             text: MovieViewManager.appName
-            color: "white"
-            font.pixelSize: fontSizeXLarge
+            color: Constants.defaultTextColor
+            font.pointSize: fontSizeLarge
             anchors.centerIn: parent
         }
     }

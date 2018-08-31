@@ -1,26 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>qtquickcontrols2.conf</file>
-        <file>Images/add_movies.png</file>
-        <file>Images/add_movies@2x.png</file>
-        <file>Images/play_movies.png</file>
-        <file>Images/play_movies@2x.png</file>
         <file>Images/logo.png</file>
-        <file>Images/logo@2x.png</file>
         <file>Images/more.png</file>
-        <file>Images/more@2x.png</file>
         <file>Images/search.png</file>
-        <file>Images/search@2x.png</file>
-        <file>Images/movie_search.png</file>
-        <file>Images/movie_search@2x.png</file>
         <file>Images/share.png</file>
-        <file>Images/share@2x.png</file>
         <file>Images/remove.png</file>
-        <file>Images/remove@2x.png</file>
         <file>Images/deleteall.png</file>
-        <file>Images/deleteall@2x.png</file>
-        <file>Images/credits.png</file>
-        <file>Images/credits@2x.png</file>
         <file>Images/splash.png</file>
         <file>Qml/main.qml</file>
         <file>Qml/MainPage.qml</file>

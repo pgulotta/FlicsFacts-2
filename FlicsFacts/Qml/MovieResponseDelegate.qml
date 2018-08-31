@@ -2,7 +2,7 @@ import QtQuick 2.9
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
 import QtQuick.Controls 2.2
-
+import com.twentysixapps.flicsfacts2.constants 1.0
 import "../fam"
 
 Component {
@@ -50,7 +50,7 @@ Component {
                 text: model.website
                 font.pointSize: fontSizeMedium
                 onLinkActivated: Qt.openUrlExternally(model.websiteUrl)
-                color: primaryColor
+                color: Constants.primaryColor
             }
             GridTitleLabel {
                 text: qsTr("Year")
@@ -89,7 +89,7 @@ Component {
                 id: runtimeId
                 rightPadding: columnItemIndent
                 text: model.runtime
-                color: primaryColor
+                color: Constants.primaryColor
                 font.pointSize: fontSizeMedium
             }
         }
@@ -148,7 +148,7 @@ Component {
                 width: windowWidth
                 horizontalAlignment: "AlignHCenter"
                 wrapMode: Label.Wrap
-                color: primaryColor
+                color: Constants.primaryColor
                 font.pointSize: fontSizeMedium
                 text: model.status
             }
@@ -157,7 +157,7 @@ Component {
             id: posterImageId
             width: imageDimension
             height: imageDimension
-            color: "white"
+            color: Constants.defaultTextColor
             radius: 2
             anchors.bottom: parent.bottom
             anchors.bottomMargin: textMargin * 2

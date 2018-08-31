@@ -14,8 +14,23 @@ QtObject {
     readonly property string checkChar: "\u2713"
     readonly property string circleChar: "\u26aa"
     readonly property string refreshChar: "\u21bb"
-    readonly property string menuChar: "\u2261"
-
-    readonly property int animationDuration: 1100
+    readonly property string menuChar: "\u039E"
+    readonly property string primaryColor: "DarkSlateBlue"
+    readonly property string accentColor: "MediumSlateBlue"
+    readonly property string foregroundColor: "Indigo"
+    readonly property string backgroundColor: "Lavender"
+    readonly property string defaultTextColor: "White"
     readonly property int invalidItem: -1
+
+    /*
+   <  	U+003C (alt-060)	LESS-THAN SIGN//   >  	U+003E (alt-062)	GREATER-THAN SIGN
+   ?  	U+003F (alt-063)	QUESTION MARK
+⁇  	U+2047 (alt-08263)	DOUBLE QUESTION MARK
+⌕  	U+2315 (alt-08981)	TELEPHONE RECORDER  -  does not display
+☌  	U+260C (alt-09740)	CONJUNCTION = alchemical symbol for day:  does not display
+⚲  	U+26B2 (alt-09906)	NEUTER   does not display
+// https://gist.github.com/ivandrofly/0fe20773bd712b303f78
+
+    //  readonly property string menuChar: "\u2261"
+*/
 }

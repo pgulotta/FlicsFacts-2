@@ -1,7 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
-import QtQuick.Controls 2.2
+import QtQuick.Controls 2.4
 import com.twentysixapps.flicsfacts2.constants 1.0
 import "../fam"
 
@@ -22,8 +22,8 @@ ToolBar {
         anchors.leftMargin: textBorderWidth
         contentItem: Text {
             text: Constants.backChar
-            color: "white"
-            font.pixelSize: fontSizeXLarge
+            color: Constants.defaultTextColor
+            font.pointSize: fontSizeLarge
             horizontalAlignment: Image.AlignHCenter
             verticalAlignment: Image.AlignVCenter
         }
@@ -40,13 +40,13 @@ ToolBar {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: textMargin
         border.width: textBorderWidth
-        border.color: accentColor
+        border.color: Constants.accentColor
         TextField {
             id: titleRequestId
             height: textHeight
             focus: true
             placeholderText: qsTr("Movie Title")
-            color: primaryColor
+            color: Constants.primaryColor
             font.pointSize: fontSizeSmall
             verticalAlignment: Text.AlignVCenter
             anchors.left: searchTextRectId.left
@@ -61,27 +61,32 @@ ToolBar {
             onFocusChanged: Qt.inputMethod.hide()
         }
     }
-    ToolButton {
-        id: searchButtonId
+    RowLayout {
         anchors.left: searchTextRectId.right
         anchors.leftMargin: textBorderWidth
-        contentItem: Image {
-            fillMode: Image.Pad
-            horizontalAlignment: Image.AlignHCenter
-            verticalAlignment: Image.AlignVCenter
-            source: "qrc:/Images/search.png"
-        }
-        onClicked: {
-            processSearchRequest()
-            onFocusChanged: Qt.inputMethod.hide()
+        // anchors.top: searchTextRectId.top
+        // anchors.topMargin: 2
+        ToolButton {
+            id: searchButtonId
+            Layout.maximumWidth: textHeight
+            Layout.maximumHeight: textHeight
+            contentItem: Image {
+                fillMode: Image.PreserveAspectFit
+                clip: true
+                source: "qrc:/Images/search.png"
+            }
+            onClicked: {
+                processSearchRequest()
+                onFocusChanged: Qt.inputMethod.hide()
+            }
         }
     }
     ToolButton {
         id: removeButtonId
-        anchors.left: searchButtonId.right
+        anchors.left: parent.right
         visible: movieSearchResponses.count !== 0
         contentItem: Image {
-            fillMode: Image.Pad
+            fillMode: Image.PreserveAspectFit
             horizontalAlignment: Image.AlignHCenter
             verticalAlignment: Image.AlignVCenter
             source: "qrc:/Images/remove.png"

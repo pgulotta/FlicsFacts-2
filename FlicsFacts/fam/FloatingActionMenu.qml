@@ -38,34 +38,30 @@ ColumnLayout {
     anchors.margins: famMargin
     state: "noshow"
 
-    FloatingActionMenuButton {
-        id: famsId
-        visible: !buttonsAboveMenu
-        onSelected: famRootId.menuItemSelected(isClosed)
-    }
-    FloatingActionButtons {
-        id: fabsId
-        onSelected: famRootId.buttonItemSelected(modelIndex)
+    //    FloatingActionMenuButton {
+    //        id: famsId
+    //        visible: !buttonsAboveMenu
+    //        onSelected: famRootId.menuItemSelected(isClosed)
+    //    }
+    //    FloatingActionButtons {
+    //        id: fabsId
+    //        onSelected: famRootId.buttonItemSelected(modelIndex)
+    //    }
+
+    //    FloatingActionMenuButton {
+    //        id: famsUpId
+    //        visible: buttonsAboveMenu
+    //        onSelected: famRootId.menuItemSelected(isClosed)
+    //    }
+    function isOpen() {
+        return famRootId.state === "show"
     }
 
-    FloatingActionMenuButton {
-        id: famsUpId
-        visible: buttonsAboveMenu
-        onSelected: famRootId.menuItemSelected(isClosed)
-    }
-
-    function isOpen()
-    {
-      return famRootId.state === "show"
-    }
-
-    function open()
-    {
+    function open() {
         famRootId.state = "show"
     }
 
-    function close()
-    {
+    function close() {
         famRootId.state = "noshow"
     }
 

@@ -56,35 +56,23 @@ Drawer {
                 drawerListViewId.currentIndex = -1
                 mainDrawerId.close()
             }
-            leftPadding: avatar.implicitWidth + spacingIndent
-            Image {
-                id: avatar
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
-                anchors.leftMargin: textMargin
-                source: model.image
-            }
         }
         model: ListModel {
             ListElement {
                 title: qsTr("Movie Search")
                 source: "qrc:/Qml/MovieResponsePage.qml"
-                image: "qrc:/Images/movie_search.png"
             }
             ListElement {
                 title: qsTr("Movies Now Playing")
                 source: "qrc:/Qml/NowPlayingMoviesPage.qml"
-                image: "qrc:/Images/play_movies.png"
             }
             ListElement {
                 title: qsTr("Upcoming Movies")
                 source: "qrc:/Qml/UpcomingMoviesPage.qml"
-                image: "qrc:/Images/add_movies.png"
             }
             ListElement {
                 title: qsTr("About")
                 source: "qrc:/Qml/AboutPage.qml"
-                image: "qrc:/Images/credits.png"
             }
         }
 
