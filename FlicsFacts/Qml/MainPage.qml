@@ -84,7 +84,7 @@ Page {
         ImageParticle {
             anchors.fill: parent
             source: "qrc:///particleresources/star.png"
-            color: "indigo"
+            color: Constants.foregroundColor
             blueVariation: 0.5
         }
 

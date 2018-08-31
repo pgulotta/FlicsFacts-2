@@ -12,8 +12,8 @@ ApplicationWindow {
     readonly property int textMargin: dp(8)
     readonly property int spacingIndent: dp(20)
     readonly property int fontSizeLarge: dp(20)
-    readonly property int fontSizeMedium: dp(16)
-    readonly property int fontSizeSmall: dp(14)
+    readonly property int fontSizeMedium: dp(18)
+    readonly property int fontSizeSmall: dp(16)
 
     readonly property string tmdbLink: "http://www.themoviedb.org/"
     readonly property string qtLink: "http://www.qt.io/"
@@ -29,6 +29,8 @@ ApplicationWindow {
     minimumHeight: windowHeight
     color: Constants.backgroundColor
     title: MovieViewManager.appNameVersion
+    font.pointSize: fontSizeLarge
+    font.bold: true
 
     MainDrawer {
         id: mainDrawerId

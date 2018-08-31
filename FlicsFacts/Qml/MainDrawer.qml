@@ -3,6 +3,7 @@ import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
 import QtQuick.Controls 2.2
 import QtGraphicalEffects 1.0
+import com.twentysixapps.flicsfacts2.constants 1.0
 
 Drawer {
     id: mainDrawerId
@@ -18,7 +19,7 @@ Drawer {
             gradient: Gradient {
                 GradientStop {
                     position: 0.00
-                    color: "DarkSlateBlue"
+                    color: Constants.primaryColor
                 }
                 GradientStop {
                     position: 0.50
@@ -26,13 +27,14 @@ Drawer {
                 }
                 GradientStop {
                     position: 1.00
-                    color: "DarkSlateBlue"
+                    color: Constants.primaryColor
                 }
             }
             TitleLabel {
                 text: MovieViewManager.appName
                 anchors.centerIn: parent
-                color: "DarkSlateBlue"
+                color: Constants.primaryColor
+                font.pointSize: fontSizeLarge
             }
         }
     }
@@ -47,6 +49,7 @@ Drawer {
         delegate: ItemDelegate {
             width: parent.width
             text: model.title
+            font.pointSize: fontSizeMedium
             highlighted: false
             onClicked: {
                 if (drawerListViewId.currentIndex != index) {
