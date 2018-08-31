@@ -52,7 +52,7 @@ signals:
     void displayTextMessage(const QString&  title, const QString& message) const;
 
 public:
-    explicit MovieViewManager(QObject *parent = 0);
+    explicit MovieViewManager(QObject *parent = nullptr);
 
 //    virtual ~MovieViewManager() {
 //        qDebug() << "~MovieViewManager() called";
@@ -117,6 +117,7 @@ private:
     void queryMovieSearch(int responseId, const QString& movieTitle);
     void queryMovieDetails(int movieId, const QStringList& attributes);
     void queryMovieCredits(int movieId, const QStringList& attributes);
+    inline void runRequest(const QNetworkRequest& request);
     void displayNothingToShare();
     void displayShareNotSupported();
     bool removeMovieSearchResponses();

@@ -15,8 +15,6 @@ ToolBar {
 
     ToolButton {
         id: backToolButtonId
-        width: 42
-        height: width
         visible: true
         anchors.left: parent.left
         anchors.leftMargin: textBorderWidth
@@ -27,7 +25,7 @@ ToolBar {
             horizontalAlignment: Image.AlignHCenter
             verticalAlignment: Image.AlignVCenter
         }
-        onClicked: rootId.onBackSelected()
+        onClicked: onBackSelected()
     }
     Rectangle {
         id: searchTextRectId

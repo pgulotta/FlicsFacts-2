@@ -143,7 +143,7 @@ void MovieViewManager::queryMovieSearch(int responseId, const QString& movieTitl
       QStringList attributes;
       mMovieAttributes.assignMovieSearchAttributes( responseId, attributes);
       request.setAttribute(QNetworkRequest::Attribute::User, QVariant(attributes ));
-      mNetworkAccessManager.get(request);
+      runRequest(request);
     }
   } catch (std::exception const& e) {
     qDebug() << "MovieViewManager::queryMovieSearch exception: " << e.what();
@@ -154,17 +154,23 @@ void MovieViewManager::queryMovieCredits(int movieId, const QStringList& attribu
   try {
     auto request = QNetworkRequest( formatMovieCreditsUrl(movieId));
     request.setAttribute(QNetworkRequest::Attribute::User, QVariant(attributes ));
-    mNetworkAccessManager.get(request);
+    runRequest(request);
   } catch (std::exception const& e) {
     qDebug() << "MovieViewManager::queryMovieCredits exception: " << e.what();
-  }
+    }
+}
+
+void MovieViewManager::runRequest(const QNetworkRequest &request)
+{
+    qDebug() << "MovieViewManager::runRequest: " << request.url();
+    mNetworkAccessManager.get(request);
 }
 
 void MovieViewManager::queryMovieDetails(int movieId, const QStringList& attributes) {
   try {
     auto request = QNetworkRequest( formatMovieDetailsUrl(movieId));
     request.setAttribute(QNetworkRequest::Attribute::User, QVariant(attributes ));
-    mNetworkAccessManager.get(request);
+    runRequest(request);
   } catch (std::exception const& e) {
     qDebug() << "MovieViewManager::queryMovieDetails exception: " << e.what();
   }
@@ -185,7 +191,7 @@ void MovieViewManager::queryUpcomongMovies() {
       mUpcomingMoviesResponses.append( new MovieResponse( this));
       auto request = QNetworkRequest(gUpcomongMoviesRequest);
       request.setAttribute(QNetworkRequest::Attribute::User, QVariant(attributes ));
-      mNetworkAccessManager.get(request);
+      runRequest(request);
     }
   } catch (std::exception const& e) {
     qDebug() << "MovieViewManager::queryUpcomongMovies exception: " << e.what();
@@ -207,7 +213,7 @@ void MovieViewManager::queryNowPlayingMovies() {
       mNowPlayingMoviesResponses.append( new MovieResponse( this));
       auto request = QNetworkRequest(gNowPlayingMoviesRequest);
       request.setAttribute(QNetworkRequest::Attribute::User, QVariant(attributes ));
-      mNetworkAccessManager.get(request);
+      runRequest(request);
     }
   } catch (std::exception const& e) {
     qDebug() << "MovieViewManager::queryNowPlayingMovies exception: " << e.what();

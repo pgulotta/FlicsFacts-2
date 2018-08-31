@@ -66,7 +66,7 @@ Page {
         Label {
             text: " "
         }
-        HeadingLabel {
+        TitleLabel {
             text: qsTr("Privacy")
         }
         TextLabel {
@@ -94,7 +94,7 @@ Page {
         Label {
             text: " "
         }
-        HeadingLabel {
+        TitleLabel {
             text: qsTr("Disclaimer")
         }
         TextLabel {

@@ -5,4 +5,5 @@ Label {
     wrapMode: Label.Wrap
     font.pointSize: fontSizeSmall
     color: Constants.primaryColor
+    font.bold: false
 }

@@ -41,7 +41,7 @@ Component {
             }
             GridItemLabel {
                 text: model.title
-                font.bold: true
+                font.italic: true
             }
             GridTitleLabel {
                 text: qsTr("Website")
