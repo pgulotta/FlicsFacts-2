@@ -44,7 +44,8 @@ Component {
                 font.italic: true
             }
             GridTitleLabel {
-                text: qsTr("Website")
+                text: gridColumnCount == 2 ? qsTr("Website") : qsTr(
+                                                 "      Website")
             }
             Text {
                 text: model.website
@@ -59,7 +60,8 @@ Component {
                 text: model.year
             }
             GridTitleLabel {
-                text: qsTr("Released")
+                text: gridColumnCount == 2 ? qsTr("Released") : qsTr(
+                                                 "      Released")
             }
             GridItemLabel {
                 text: model.released
@@ -71,7 +73,7 @@ Component {
                 text: model.popularity
             }
             GridTitleLabel {
-                text: qsTr("Rated")
+                text: gridColumnCount == 2 ? qsTr("Rated") : qsTr("      Rated")
             }
             GridItemLabel {
                 text: model.rating
@@ -83,7 +85,8 @@ Component {
                 text: model.languages
             }
             GridTitleLabel {
-                text: qsTr("Runtime")
+                text: gridColumnCount == 2 ? qsTr("Runtime") : qsTr(
+                                                 "      Runtime")
             }
             Text {
                 id: runtimeId

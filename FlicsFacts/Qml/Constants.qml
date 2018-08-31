@@ -20,6 +20,7 @@ QtObject {
     readonly property string foregroundColor: "Indigo"
     readonly property string backgroundColor: "Lavender"
     readonly property string defaultTextColor: "White"
+
     readonly property int invalidItem: -1
 
     /*

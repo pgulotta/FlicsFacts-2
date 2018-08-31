@@ -7,17 +7,17 @@
 class Initializer final : public QObject
 {
 public:
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    explicit Initializer(const Initializer& ) = delete;
-    Initializer& operator= (const Initializer&) = delete;
+  explicit Initializer( const Initializer& ) = delete;
+  Initializer& operator= ( const Initializer& ) = delete;
 
-    explicit Initializer(QObject *parent=0);
+  explicit Initializer( QObject* parent = nullptr );
 
 private:
-    QQmlApplicationEngine mQmlApplicationEngine;
-    MovieViewManager mMovieViewManager;
+  QQmlApplicationEngine mQmlApplicationEngine;
+  MovieViewManager mMovieViewManager;
 
 
 };
