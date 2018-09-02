@@ -12,7 +12,6 @@ Page {
     header: MovieSearchToolBar {
         id: movieSearchToolBarId
         onMovieRemoved: {
-            console.log(indexRemoved)
             if (indexRemoved === -1)
                 movieIndex = 0
         }

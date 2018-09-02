@@ -81,8 +81,8 @@ ToolBar {
         }
     }
     RowLayout {
-        anchors.left: searchButtonRowId.right
-        anchors.leftMargin: textBorderWidth
+        anchors.right: parent.right
+        anchors.rightMargin: textBorderWidth
         visible: movieSearchResponses.count !== 0
         ToolButton {
             id: removeButtonId
