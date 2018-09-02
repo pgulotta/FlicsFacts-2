@@ -20,8 +20,8 @@ ApplicationWindow {
     readonly property string websiteLink: "http://sites.google.com/view/flicsfacts/home"
 
     property bool isPortraitMode: Screen.height > Screen.width
-    property int windowWidth: isAndroidPlatform ? Screen.width : Screen.width / 3
-    property int windowHeight: isAndroidPlatform ? Screen.height : Screen.height / 3
+    property int windowWidth: isAndroidPlatform ? Screen.width : Screen.width / 2
+    property int windowHeight: isAndroidPlatform ? Screen.height : Screen.height / 2
 
     id: rootId
     visible: true

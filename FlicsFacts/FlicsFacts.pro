@@ -78,17 +78,22 @@ contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
         $$PWD/android/libs/openssl/armeabi-v7a/libssl.so
 }
 
+
 contains(ANDROID_TARGET_ARCH,x86) {
     ANDROID_EXTRA_LIBS = \
         $$PWD/android/libs/openssl/x86/libcrypto.so \
         $$PWD/android/libs/openssl/x86/libssl.so
 }
 
+
+
+
 message(Qt version: $$[QT_VERSION])
 message(Source directory = $$PWD)
 message(ANDROID_TARGET_ARCH = $$ANDROID_TARGET_ARCH)
 message(ANDROID_EXTRA_LIBS = $$ANDROID_EXTRA_LIBS)
-
+message(libcrypto = $$PWD/android/libs/openssl/x86/libcrypto.so)
+message(libssl = $$PWD/android/libs/openssl/x86/libssl.so)
 
 
 

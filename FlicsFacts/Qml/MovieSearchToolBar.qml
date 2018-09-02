@@ -60,10 +60,9 @@ ToolBar {
         }
     }
     RowLayout {
+        id: searchButtonRowId
         anchors.left: searchTextRectId.right
         anchors.leftMargin: textBorderWidth
-        // anchors.top: searchTextRectId.top
-        // anchors.topMargin: 2
         ToolButton {
             id: searchButtonId
             Layout.maximumWidth: textHeight
@@ -79,19 +78,24 @@ ToolBar {
             }
         }
     }
-    ToolButton {
-        id: removeButtonId
-        anchors.left: parent.right
+    RowLayout {
+        anchors.left: searchButtonRowId.right
+        anchors.leftMargin: textBorderWidth
         visible: movieSearchResponses.count !== 0
-        contentItem: Image {
-            fillMode: Image.PreserveAspectFit
-            horizontalAlignment: Image.AlignHCenter
-            verticalAlignment: Image.AlignVCenter
-            source: "qrc:/Images/remove.png"
-        }
-        onClicked: {
-            MovieViewManager.removeSelectedMovie(movieSearchPageId.movieIndex)
-            onFocusChanged: Qt.inputMethod.hide()
+        ToolButton {
+            id: removeButtonId
+            Layout.maximumWidth: textHeight
+            Layout.maximumHeight: textHeight
+            contentItem: Image {
+                fillMode: Image.PreserveAspectFit
+                clip: true
+                source: "qrc:/Images/remove.png"
+            }
+            onClicked: {
+                MovieViewManager.removeSelectedMovie(
+                            movieSearchPageId.movieIndex)
+                onFocusChanged: Qt.inputMethod.hide()
+            }
         }
     }
 

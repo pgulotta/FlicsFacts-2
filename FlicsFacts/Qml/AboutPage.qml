@@ -38,7 +38,7 @@ Page {
         anchors.left: parent.left
         anchors.leftMargin: spacingIndent
         anchors.top: parent.top
-        anchors.topMargin: spacingIndent
+        anchors.topMargin: textHeight
     }
     TextLabel {
         id: aboutDescriptionId
