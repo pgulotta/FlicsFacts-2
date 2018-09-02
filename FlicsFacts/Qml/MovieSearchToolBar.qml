@@ -8,6 +8,8 @@ import "../fam"
 ToolBar {
     id: movieSearchToolBarId
 
+    signal movieRemoved(int indexRemoved)
+
     Component.onCompleted: {
         titleRequestId.forceActiveFocus()
         Qt.inputMethod.hide()
@@ -95,6 +97,7 @@ ToolBar {
                 MovieViewManager.removeSelectedMovie(
                             movieSearchPageId.movieIndex)
                 onFocusChanged: Qt.inputMethod.hide()
+                movieRemoved(movieSearchPageId.movieIndex)
             }
         }
     }
