@@ -48,7 +48,7 @@ Page {
         onButtonItemSelected: {
             switch (modelIndex) {
             case 0:
-                MovieViewManager.shareMoviqeResponses()
+                MovieViewManager.shareMovieResponses()
                 break
             case 1:
                 MovieViewManager.removeAllMovieSearchResponses()
