@@ -22,6 +22,7 @@ ApplicationWindow {
     property bool isPortraitMode: Screen.height > Screen.width
     property int windowWidth: isAndroidPlatform ? Screen.width : Screen.width / 2
     property int windowHeight: isAndroidPlatform ? Screen.height : Screen.height / 2
+    property int famLabelWidth: isPortraitMode ? windowWidth * 0.7 : windowWidth * 0.5
 
     id: rootId
     visible: true
