@@ -5,31 +5,35 @@
 
 class SortedMovieResponsesModel final : public QSortFilterProxyModel
 {
-Q_OBJECT
+  Q_OBJECT
 
 public:
-    SortedMovieResponsesModel(QQmlObjectListModel<MovieResponse>* movieResponses, QObject *parent )   : QSortFilterProxyModel(parent) {
-        // qDebug() << " SortedMovieResponsesModel() called";
-        setDynamicSortFilter(false);
-        setSourceModel(movieResponses);
-    }
+  SortedMovieResponsesModel( QQmlObjectListModel<MovieResponse>* movieResponses,
+                             QObject* parent )   : QSortFilterProxyModel( parent )
+  {
+    // qDebug() << Q_FUNC_INFO;
+    setDynamicSortFilter( false );
+    setSourceModel( movieResponses );
+  }
 
 //    virtual ~SortedMovieResponsesModel() {
-//        qDebug() << "~SortedMovieResponsesModel() called";
+//        qDebug() << Q_FUNC_INFO;
 //    }
 
-    void sortlByTitle()
-    {
-        sort(0, Qt::AscendingOrder);
-    }
+  void sortlByTitle()
+  {
+    sort( 0, Qt::AscendingOrder );
+  }
 
 protected:
-    bool lessThan(const QModelIndex &left, const QModelIndex &right) const override
-    {
-        MovieResponse * leftMovieResponse = qobject_cast< MovieResponse*>(qvariant_cast<QObject *>( left.data(Qt::UserRole)));
-        MovieResponse * rightMovieResponse = qobject_cast< MovieResponse*>(qvariant_cast<QObject *>( right.data(Qt::UserRole)));
+  bool lessThan( const QModelIndex& left, const QModelIndex& right ) const override
+  {
+    MovieResponse* leftMovieResponse = qobject_cast< MovieResponse*>( qvariant_cast<QObject*>( left.data(
+                                                                        Qt::UserRole ) ) );
+    MovieResponse* rightMovieResponse = qobject_cast< MovieResponse*>( qvariant_cast<QObject*>( right.data(
+                                                                         Qt::UserRole ) ) );
 
-        return leftMovieResponse->title() < rightMovieResponse->title();
-    }
+    return leftMovieResponse->title() < rightMovieResponse->title();
+  }
 
 };

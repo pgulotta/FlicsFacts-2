@@ -164,19 +164,19 @@ public:
   explicit MovieResponse( QObject* parent = nullptr ) :
     QObject( parent )
   {
-    //  qDebug() << " MovieResponse() called";
+    //  qDebug() << Q_FUNC_INFO;
   }
 
   MovieResponse( const QString& title,  QObject* parent = nullptr ) :
     QObject( parent )
   {
-    // qDebug() << " MovieResponse() called";
+    // qDebug() << Q_FUNC_INFO;
     m_title = title;
   }
 
 //    virtual ~MovieResponse()
 //    {
-//        qDebug() << " ~MovieResponse() called";
+//        qDebug() << Q_FUNC_INFO;
 //    }
 
   int movieId() const

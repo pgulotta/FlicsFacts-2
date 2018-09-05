@@ -8,63 +8,71 @@
 
 class FloatingActions : public QObject
 {
-Q_OBJECT
+  Q_OBJECT
 
 signals:
 
 public slots:
-    virtual void onButtonSelected(const QString&  contextId,int modelIndex){
-        Q_UNUSED(contextId);
-        Q_UNUSED(modelIndex);
-    }
+  virtual void onButtonSelected( const QString&  contextId, int modelIndex )
+  {
+    Q_UNUSED( contextId );
+    Q_UNUSED( modelIndex );
+  }
 
-    virtual void onMenuSelected(const QString&  contextId, bool isClosed){
-        Q_UNUSED(contextId);
-        Q_UNUSED(isClosed);
-    }
+  virtual void onMenuSelected( const QString&  contextId, bool isClosed )
+  {
+    Q_UNUSED( contextId );
+    Q_UNUSED( isClosed );
+  }
 
 public:
-    explicit FloatingActions(QObject *parent = nullptr);
+  explicit FloatingActions( QObject* parent = nullptr );
 
-    FloatingActions( const QString& menuProperyName, const QString& buttonsProperyName,QQmlContext *context, QObject *parent = nullptr);
+  FloatingActions( const QString& menuProperyName, const QString& buttonsProperyName, QQmlContext* context,
+                   QObject* parent = nullptr );
 
 //    virtual ~FloatingActions ( )
 //    {
-//        qDebug() << "~FloatingActions called";
+//        qDebug() << Q_FUNC_INFO;
 //    }
 
-    static void initialize(QQmlContext *context, QObject *parent)
-    {
-        FloatingActions* floatingActions = new FloatingActions {parent};
-        floatingActions->initializeContext(context);
-        qmlRegisterType<FloatingActionMenu>("FloatingActionMenu",1,0,"FloatingActionMenu");
-    }
+  static void initialize( QQmlContext* context, QObject* parent )
+  {
+    FloatingActions* floatingActions = new FloatingActions {parent};
+    floatingActions->initializeContext( context );
+    qmlRegisterType<FloatingActionMenu>( "FloatingActionMenu", 1, 0, "FloatingActionMenu" );
+  }
 
-    virtual void initialize(QObject *parent) {
-        Q_UNUSED(parent);
-    }
+  virtual void initialize( QObject* parent )
+  {
+    Q_UNUSED( parent );
+  }
 
-    template<typename T>
-    static T* createInstance (const QString& menuProperyName, const QString& buttonsProperyName, QQmlContext *context, QObject * parent ) {
-        T* t = new T { menuProperyName, buttonsProperyName,context,parent};
-        t->initialize(parent);
-        return t;
-    }
+  template<typename T>
+  static T* createInstance ( const QString& menuProperyName, const QString& buttonsProperyName, QQmlContext* context,
+                             QObject* parent )
+  {
+    T* t = new T { menuProperyName, buttonsProperyName, context, parent};
+    t->initialize( parent );
+    return t;
+  }
 
-    virtual FloatingActionMenu* menu() {
-        return mFloatingActionMenu;
-    }
+  virtual FloatingActionMenu* menu()
+  {
+    return mFloatingActionMenu;
+  }
 
-    virtual QQmlObjectListModel<FloatingActionButton>* buttons() {
-        return &mFloatingActionButtons;
-    }
+  virtual QQmlObjectListModel<FloatingActionButton>* buttons()
+  {
+    return &mFloatingActionButtons;
+  }
 
 protected:
-    void initializeContext ( QQmlContext *context);
-    FloatingActionMenu* mFloatingActionMenu;
-    QQmlObjectListModel<FloatingActionButton> mFloatingActionButtons;
-    const QString mMenuProperyName;
-    const QString mButtonsProperyName;
+  void initializeContext ( QQmlContext* context );
+  FloatingActionMenu* mFloatingActionMenu;
+  QQmlObjectListModel<FloatingActionButton> mFloatingActionButtons;
+  const QString mMenuProperyName;
+  const QString mButtonsProperyName;
 
 private:
 

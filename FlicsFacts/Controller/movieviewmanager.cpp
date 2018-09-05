@@ -71,12 +71,13 @@ void MovieViewManager::findFlicSelected( const QString& searchText )
     qDebug() <<   Q_FUNC_INFO << movieSearch;
 
     if ( !movieSearch.isEmpty() ) {
+      mflicSelected = movieSearch;
       int responseIndex = mMovieSearchResponses.count();
       mMovieSearchResponses.append( new MovieResponse( movieSearch, this ) );
       queryMovieSearch( responseIndex, searchText );
     }
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::findFlicSelected exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -94,7 +95,7 @@ void MovieViewManager::removeSelectedMovie( int responseId )
     movieResponse->setParent( nullptr );
     delete  movieResponse;
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::removeSelectedMovie exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -105,7 +106,7 @@ void MovieViewManager::removeAllMovieSearchResponses()
       removeSelectedMovie( mMovieSearchResponses.count() - 1 );
     }
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::removeAllMovieSearchResponses exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -120,7 +121,7 @@ bool MovieViewManager::removeMovieSearchResponses()
 
     result = true;
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::removeAllMovieSearchResponses exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 
   return result;
@@ -144,7 +145,7 @@ void MovieViewManager::shareMovieResponses()
     displayShareNotSupported();
     #endif
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::shareMovieResponses exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -164,7 +165,7 @@ void MovieViewManager::tryQueryMovieSearch( int responseId )
       queryMovieSearch( responseId, searchResponse->title() );
     }
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::tryQueryMovieSearch exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -179,7 +180,7 @@ void MovieViewManager::queryMovieSearch( int responseId, const QString& movieTit
       runRequest( request );
     }
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::queryMovieSearch exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -190,13 +191,13 @@ void MovieViewManager::queryMovieCredits( int movieId, const QStringList& attrib
     request.setAttribute( QNetworkRequest::Attribute::User, QVariant( attributes ) );
     runRequest( request );
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::queryMovieCredits exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
 void MovieViewManager::runRequest( const QNetworkRequest& request )
 {
-  qDebug() << "MovieViewManager::runRequest: " << request.url();
+  qDebug() << Q_FUNC_INFO << request.url();
   mNetworkAccessManager.get( request );
 }
 
@@ -207,7 +208,7 @@ void MovieViewManager::queryMovieDetails( int movieId, const QStringList& attrib
     request.setAttribute( QNetworkRequest::Attribute::User, QVariant( attributes ) );
     runRequest( request );
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::queryMovieDetails exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -231,7 +232,7 @@ void MovieViewManager::queryUpcomongMovies()
       runRequest( request );
     }
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::queryUpcomongMovies exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -255,7 +256,7 @@ void MovieViewManager::queryNowPlayingMovies()
       runRequest( request );
     }
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::queryNowPlayingMovies exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -335,7 +336,7 @@ void MovieViewManager::onNetworkReply( QNetworkReply* networkReply )
       }
     }
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::onNetworkReply exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 
   networkReply->deleteLater();
@@ -355,12 +356,13 @@ void MovieViewManager::onMovieSearchParsingComplete( int responseId, bool succes
       queryMovieCredits( movieResponse->movieId(), attributes );
 
     } else {
-      movieResponse->setStatus( tr( "Unable to find the selected movie." ) );
+      qDebug() << Q_FUNC_INFO << m_titleRequest;
+      movieResponse->setStatus( tr( "Unable to find movie " ) + mflicSelected  );
     }
 
     emit responseReceived( responseId );
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::onMovieSearchParsingComplete exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -390,7 +392,7 @@ void MovieViewManager::onNetworkQueryTimer()
       mNetworkQueryTimer->start( gQueryTimerIntervalMs );
     }
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::onNetworkQueryTimer exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -414,7 +416,7 @@ void MovieViewManager::onUpcomingMoviesParsingComplete( int responseId, bool suc
       mUpcomingMoviesResponses.at( responseId )->setStatus( tr( "Unable to find any 'Upcoming Movies'" ) );
     }
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::onUpcomingMoviesParsingComplete exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -437,7 +439,7 @@ void MovieViewManager::onNowPlayingParsingComplete( int responseId, bool success
       mNowPlayingMoviesResponses.at( responseId )->setStatus( tr( "Unable to find any 'Movies Now Playing'" ) );
     }
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::onNowPlayingParsingComplete exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
@@ -462,7 +464,7 @@ void MovieViewManager::onShareResponsesFormatted()
       shareClient.setShare( mShareResponsesWatcher.result() );
     }
   } catch ( std::exception const& e ) {
-    qWarning() << "MovieViewManager::onShareResponsesFormatted exception: " << e.what();
+    qWarning() << Q_FUNC_INFO << e.what();
   }
 }
 
