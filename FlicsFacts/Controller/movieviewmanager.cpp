@@ -64,13 +64,16 @@ MovieViewManager::MovieViewManager( QObject* parent ) :
 }
 
 
-void MovieViewManager::findFlicSelected( const QString& movieTitle )
+void MovieViewManager::findFlicSelected( const QString& searchText )
 {
   try {
-    if ( !movieTitle.isEmpty() ) {
+    QString movieSearch {  searchText.trimmed()};
+    qDebug() <<   Q_FUNC_INFO << movieSearch;
+
+    if ( !movieSearch.isEmpty() ) {
       int responseIndex = mMovieSearchResponses.count();
-      mMovieSearchResponses.append( new MovieResponse( movieTitle, this ) );
-      queryMovieSearch( responseIndex, movieTitle );
+      mMovieSearchResponses.append( new MovieResponse( movieSearch, this ) );
+      queryMovieSearch( responseIndex, searchText );
     }
   } catch ( std::exception const& e ) {
     qWarning() << "MovieViewManager::findFlicSelected exception: " << e.what();
@@ -155,6 +158,7 @@ void MovieViewManager::tryQueryMovieSearch( int responseId )
     }
 
     auto searchResponse = mMovieSearchResponses.at( responseId );
+    qDebug() <<   Q_FUNC_INFO << searchResponse;
 
     if ( searchResponse->status().startsWith( m_networkFailureMessage ) ) {
       queryMovieSearch( responseId, searchResponse->title() );
@@ -325,7 +329,6 @@ void MovieViewManager::onNetworkReply( QNetworkReply* networkReply )
           break;
 
         case queryType::undefined:
-        default:
           qWarning() << "MovieViewManager::onNetworkReply: Unable to parse netork response ";
           break;
         }
