@@ -13,7 +13,6 @@ class MovieSearchParser final : public QObject
 {
   Q_OBJECT
 
-public slots:
 
 signals:
   void movieSearchParsingComplete( int responseId, bool isSuccessful );

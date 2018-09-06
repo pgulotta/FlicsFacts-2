@@ -11,20 +11,21 @@ class QString;
 
 class ShareResponsesFormatter final : public QObject
 {
-Q_OBJECT
+  Q_OBJECT
 
 public slots:
 
 signals:
 
 public:
-    explicit ShareResponsesFormatter(QObject *parent = 0);
-    explicit ShareResponsesFormatter(const ShareResponsesFormatter& rhs) = delete;
-    ShareResponsesFormatter& operator= (const ShareResponsesFormatter& rhs) = delete;
-    QString formatAsText(QQmlObjectListModel<MovieResponse>::const_iterator begin, QQmlObjectListModel<MovieResponse>::const_iterator end);
+  explicit ShareResponsesFormatter( QObject* parent = nullptr );
+  explicit ShareResponsesFormatter( const ShareResponsesFormatter& rhs ) = delete;
+  ShareResponsesFormatter& operator= ( const ShareResponsesFormatter& rhs ) = delete;
+  QString formatAsText( QQmlObjectListModel<MovieResponse>::const_iterator begin,
+                        QQmlObjectListModel<MovieResponse>::const_iterator end );
 
 private:
-    QString mFormattedResponses;
+  QString mFormattedResponses;
 
 };
 

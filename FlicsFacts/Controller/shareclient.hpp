@@ -5,18 +5,19 @@
 
 class ShareClient final : public QObject
 {
-Q_OBJECT
+  Q_OBJECT
 
 public slots:
-    void setShare(const QString &shareContent) const;
+  void setShare( const QString& shareContent ) const;
 
 signals:
 
 public:
-    explicit ShareClient(QObject *parent = 0) : QObject(parent){
-    }
-    explicit ShareClient(const ShareClient& rhs) = delete;
-    ShareClient& operator= (const ShareClient& rhs) = delete;
+  explicit ShareClient( QObject* parent = nullptr ) : QObject( parent )
+  {
+  }
+  explicit ShareClient( const ShareClient& rhs ) = delete;
+  ShareClient& operator= ( const ShareClient& rhs ) = delete;
 
 private:
 

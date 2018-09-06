@@ -28,6 +28,10 @@ class MovieViewManager final : public QObject
   Q_PROPERTY( QString appNameVersion READ appNameVersion CONSTANT )
   Q_PROPERTY( QString titleRequest READ titleRequest )
 
+signals:
+  void responseReceived( int responseId );
+  void displayTextMessage( const QString&  title, const QString& message ) const;
+
 private slots:
   void onNetworkQueryTimer();
   void onNetworkReply( QNetworkReply* networkReply );
@@ -38,18 +42,16 @@ private slots:
   void onNowPlayingParsingComplete( int responseId, bool successful );
   void onShareResponsesFormatted();
 
-public slots:
-  void shareMovieResponses();
-  void findFlicSelected( const QString& movieTitle );
-  void tryQueryMovieSearch( int responseId );
-  void removeSelectedMovie( int responseId );
-  void removeAllMovieSearchResponses();
-  void queryNowPlayingMovies();
-  void queryUpcomongMovies();
+public :
+  Q_INVOKABLE void shareMovieResponses();
+  Q_INVOKABLE void findFlicSelected( const QString& movieTitle );
+  Q_INVOKABLE void tryQueryMovieSearch( int responseId );
+  Q_INVOKABLE void removeSelectedMovie( int responseId );
+  Q_INVOKABLE void removeAllMovieSearchResponses();
+  Q_INVOKABLE void queryNowPlayingMovies();
+  Q_INVOKABLE void queryUpcomongMovies();
 
-signals:
-  void responseReceived( int responseId );
-  void displayTextMessage( const QString&  title, const QString& message ) const;
+
 
 public:
   explicit MovieViewManager( QObject* parent = nullptr );

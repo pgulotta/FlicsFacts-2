@@ -53,7 +53,9 @@ static QHash<int, QString> mGenres {
   {37, QObject::tr( "Western" )}
 };
 
-static QString convertJsonDoubleToString( const QJsonObject& jsonObject, const QString& key  )
+namespace  {
+
+QString convertJsonDoubleToString( const QJsonObject& jsonObject, const QString& key  )
 {
   if ( jsonObject.contains( key ) ) {
     QJsonValue value { jsonObject.value( key )};
@@ -63,9 +65,41 @@ static QString convertJsonDoubleToString( const QJsonObject& jsonObject, const Q
   }
 }
 
-static QString extractYear( const QString& source )
+QString extractYear( const QString& source )
 {
   return source.mid( 0, 4 );
+}
+
+QString getGenres( const QJsonObject& jsonObject )
+{
+  QString result;
+
+  if ( jsonObject.contains( genreIdsKey ) ) {
+    QJsonValue genreIds { jsonObject.value( genreIdsKey )};
+
+    if ( genreIds.isArray() ) {
+      QJsonArray genreIdsArray = genreIds.toArray();
+
+      if ( genreIdsArray.count() > 0 ) {
+        int counter = 0;
+
+        for ( auto genreId : genreIdsArray ) {
+          bool addComma = !result.isEmpty();
+          auto cit = mGenres.constFind( genreId.toInt() );
+
+          if ( cit != mGenres.cend() ) {
+            result += ( addComma )  ? ", " + cit.value()  :  cit.value();
+          }
+
+          if ( ++counter > 2 ) {
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  return result.isEmpty() ? gNotDefined : result;
 }
 
 QString extractText( const QJsonObject& jsonObject,  const QString& key )
@@ -103,7 +137,7 @@ QString extractInt( const QJsonObject& jsonObject,  const QString& key )
   return nullptr;
 }
 
-static bool isUpcomingMovieValid( const QJsonObject& jsonObject )
+bool isUpcomingMovieValid( const QJsonObject& jsonObject )
 {
   QString releaseDate {extractText( jsonObject, releaseDateKey )};
 
@@ -115,7 +149,7 @@ static bool isUpcomingMovieValid( const QJsonObject& jsonObject )
   return date > upcomingMovieDateFloor;
 }
 
-static bool isNowPlayingMovieValid( const QJsonObject& jsonObject )
+bool isNowPlayingMovieValid( const QJsonObject& jsonObject )
 {
   QString releaseDate {extractText( jsonObject, releaseDateKey )};
 
@@ -127,7 +161,7 @@ static bool isNowPlayingMovieValid( const QJsonObject& jsonObject )
   return date > nowPlayingMovieDateFloor;
 }
 
-static QString getLanguages( const QJsonObject& jsonObject )
+QString getLanguages( const QJsonObject& jsonObject )
 {
   QString result;
 
@@ -159,37 +193,6 @@ static QString getLanguages( const QJsonObject& jsonObject )
 
   return result.isEmpty() ? gNotDefined : result;
 }
-
-static QString getGenres( const QJsonObject& jsonObject )
-{
-  QString result;
-
-  if ( jsonObject.contains( genreIdsKey ) ) {
-    QJsonValue genreIds { jsonObject.value( genreIdsKey )};
-
-    if ( genreIds.isArray() ) {
-      QJsonArray genreIdsArray = genreIds.toArray();
-
-      if ( genreIdsArray.count() > 0 ) {
-        int counter = 0;
-
-        for ( auto genreId : genreIdsArray ) {
-          bool addComma = !result.isEmpty();
-          auto cit = mGenres.constFind( genreId.toInt() );
-
-          if ( cit != mGenres.cend() ) {
-            result += ( addComma )  ? ", " + cit.value()  :  cit.value();
-          }
-
-          if ( ++counter > 2 ) {
-            break;
-          }
-        }
-      }
-    }
-  }
-
-  return result.isEmpty() ? gNotDefined : result;
 }
 
 MovieSearchParser::MovieSearchParser( QObject* parent ) :
