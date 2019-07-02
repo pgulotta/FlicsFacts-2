@@ -282,7 +282,7 @@ void MovieSearchParser::parseMovieSearchResult( const QByteArray& source,
         if ( jsonObject.contains( resultsKey ) ) {
           auto results = jsonObject[resultsKey];
 
-          if ( results.isArray() ) {
+          if ( results.isArray() ) {const QString resultsKey {"results"};
             QJsonArray resultsArray = results.toArray();
 
             if ( resultsArray.count() > 0 ) {

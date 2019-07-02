@@ -20,7 +20,7 @@ Component {
         property int imageExpandedDimension: isPortraitMode ? windowWidth
                                                               - spacingIndent : windowHeight * .75
         property int imageTransitionInteralMS: 500
-        property string expandPosterImage: "expandPosterImage"
+        readonly property string expandPosterImage: "expandPosterImage"
         property string expandPosterImageState: ""
 
         Grid {

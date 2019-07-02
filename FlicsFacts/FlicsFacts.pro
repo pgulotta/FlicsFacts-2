@@ -10,7 +10,7 @@ android {
     QT += androidextras
 }
 
-CONFIG += c++14
+CONFIG += c++1z
 
 
 include(./fam/fam.pri)
