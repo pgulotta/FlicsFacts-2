@@ -16,7 +16,7 @@ class QString;
 class QtNetwork;
 class QNetworkReply;
 class QTimer;
-class NetworkQueryDetails;
+struct NetworkQueryDetails;
 
 
 class MovieViewManager final : public QObject

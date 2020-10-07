@@ -1,8 +1,7 @@
-import QtQuick 2.9
+﻿import QtQuick 2.9
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
 import QtQuick.Controls 2.2
-
 
 import "../fam"
 
@@ -20,8 +19,7 @@ Page {
         Repeater {
             id: movieResponseModelId
             model: sortedNowPlayingMoviesResponses
-            delegate: MovieResponseDelegate {
-            }
+            delegate: MovieResponseDelegate {}
         }
     }
     PageIndicator {
@@ -33,7 +31,9 @@ Page {
 
     Connections {
         target: MovieViewManager
-        onResponseReceived: nowPlayingMoviesSwipeViewId.currentIndex = responseId
+        function onResponseReceived() {
+            nowPlayingMoviesSwipeViewId.currentIndex = responseId
+        }
     }
 
     Component.onCompleted: MovieViewManager.queryNowPlayingMovies()

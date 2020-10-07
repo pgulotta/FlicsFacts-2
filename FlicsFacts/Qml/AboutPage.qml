@@ -17,9 +17,9 @@ Page {
             contentItem: Text {
                 text: Constants.backChar
                 color: Constants.defaultTextColor
-                font.pointSize: fontSizeLarge
-                horizontalAlignment: Image.AlignHCenter
-                verticalAlignment: Image.AlignVCenter
+                font.pointSize: 24
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
             }
             onClicked: onBackSelected()
         }

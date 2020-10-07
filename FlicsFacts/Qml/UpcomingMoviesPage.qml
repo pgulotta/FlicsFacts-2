@@ -3,7 +3,6 @@ import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
 import QtQuick.Controls 2.2
 
-
 import "../fam"
 
 Page {
@@ -19,8 +18,7 @@ Page {
         Repeater {
             id: upcoingMoviesModelId
             model: sortedUpcomingMoviesResponses
-            delegate: MovieResponseDelegate {
-            }
+            delegate: MovieResponseDelegate {}
         }
     }
     PageIndicator {
@@ -32,7 +30,9 @@ Page {
 
     Connections {
         target: MovieViewManager
-        onResponseReceived: upcomingMoviesSwipeViewId.currentIndex = responseId
+        function onResponseReceived() {
+            upcomingMoviesSwipeViewId.currentIndex = responseId
+        }
     }
 
     Component.onCompleted: MovieViewManager.queryUpcomongMovies()
