@@ -3,9 +3,7 @@
 #include <QApplication>
 #include <QQmlContext>
 
-#ifdef Q_OS_ANDROID
-#include <QtAndroid>
-#endif
+
 
 #include "fam/floatingactions.hpp"
 
@@ -29,8 +27,5 @@ Initializer::Initializer( QObject* parent ) :
   mQmlApplicationEngine.rootContext()->setContextProperty( "MovieViewManager", &mMovieViewManager );
   mQmlApplicationEngine.load( QUrl( QStringLiteral( "qrc:/Qml/main.qml" ) ) );
 
-  #ifdef Q_OS_ANDROID
-  QtAndroid::hideSplashScreen();
-  #endif
 
 }

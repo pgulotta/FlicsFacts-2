@@ -1,7 +1,6 @@
 #include "movieviewmanager.hpp"
 #include "../FlicsFacts/Controller/shareclient.hpp"
 #include <QtConcurrent/QtConcurrentRun>
-#include <QtGui/QTouchDevice>
 #include <QApplication>
 #include <QString>
 #include <QtNetwork>

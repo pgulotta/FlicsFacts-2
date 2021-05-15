@@ -63,7 +63,7 @@ gcc|clang {
 
 
 android {
-    QT += androidextras
+#    QT += androidextras
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 include(<../../../../android_openssl/openssl.pri)

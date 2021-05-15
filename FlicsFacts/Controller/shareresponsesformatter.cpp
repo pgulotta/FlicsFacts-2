@@ -9,9 +9,9 @@ void formatField( const QString& key, const QString& value, QString& formattedTe
 }
 
 ShareResponsesFormatter::ShareResponsesFormatter( QObject* parent ) :
-  QObject{parent},
-  mFormattedResponses{1024}
+  QObject{parent}
 {
+  mFormattedResponses.resize( 1024 );
 }
 
 QString ShareResponsesFormatter::formatAsText( QQmlObjectListModel<MovieResponse>::const_iterator cbegin,

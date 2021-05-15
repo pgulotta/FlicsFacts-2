@@ -24,7 +24,7 @@ void Permissions::requestExternalStoragePermission()
                                                        "(Landroid/app/Activity;)V",
                                                        QtAndroid::androidActivity().object<jobject>()
                                                      );
-        QAndroidJniEnvironment env;
+        QJniEnvironment env;
 
         if ( env->ExceptionCheck() ) {
           env->ExceptionClear();

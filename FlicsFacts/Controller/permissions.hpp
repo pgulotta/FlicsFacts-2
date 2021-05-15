@@ -2,9 +2,8 @@
 
 #include <QObject>
 #ifdef Q_OS_ANDROID
-#include <QAndroidJniObject>
-#include <QAndroidJniEnvironment>
-#include <QtAndroid>
+#include <QJniObject>
+#include <QJniEnvironment>
 #endif
 
 class Permissions : public QObject
@@ -22,7 +21,7 @@ private:
   int mPermissionResult{false};  //  true - "Granted", false - "Denied"
 
   #if defined(Q_OS_ANDROID)
-  QAndroidJniObject mShowPermissionRationale;
+  QJniObject mShowPermissionRationale;
 
   #endif
 

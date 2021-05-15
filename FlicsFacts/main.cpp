@@ -5,7 +5,6 @@
 
 int main( int argc, char* argv[] )
 {
-  QCoreApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
   QApplication::setApplicationName( "Flics Facts" );
   QApplication::setOrganizationDomain( "twentysixapps.com" );
   QCoreApplication::setOrganizationName( QLatin1String( "26Apps" ) );
